@@ -1,0 +1,263 @@
+--CASO4
+
+VAR b_propiedad_a VARCHAR2(30);
+
+VAR b_propiedad_b VARCHAR2(30);
+
+VAR b_propiedad_c VARCHAR2(30);
+
+VAR b_propiedad_d VARCHAR2(30);
+
+VAR b_propiedad_e VARCHAR2(30);
+
+VAR b_propiedad_f VARCHAR2(30);
+
+VAR b_propiedad_g VARCHAR2(30);
+
+VAR b_propiedad_h VARCHAR2(30);
+
+
+
+
+
+EXEC :b_propiedad_a :='A' ;
+
+EXEC :b_propiedad_b :='B' ;
+
+EXEC :b_propiedad_c :='C' ;
+
+EXEC :b_propiedad_d :='D' ;
+
+EXEC :b_propiedad_e :='E' ;
+
+EXEC :b_propiedad_f :='F' ;
+
+EXEC :b_propiedad_g :='G' ;
+
+EXEC :b_propiedad_h :='H' ;
+
+
+
+SET SERVEROUTPUT ON;
+
+
+
+DECLARE
+
+v_propiedad VARCHAR2(30);
+
+v_total_propiedades NUMBER;
+
+v_valor_total NUMBER;
+
+BEGIN
+
+  SELECT
+
+  TP.DESC_TIPO_PROPIEDAD,
+
+  COUNT(P.ID_TIPO_PROPIEDAD),
+
+  SUM(P.VALOR_ARRIENDO)
+
+  INTO v_propiedad, v_total_propiedades, v_valor_total
+
+  FROM PROPIEDAD P
+
+  INNER JOIN TIPO_PROPIEDAD TP ON P.ID_TIPO_PROPIEDAD = TP.ID_TIPO_PROPIEDAD
+
+  WHERE P.ID_TIPO_PROPIEDAD=:b_propiedad_a
+
+  GROUP BY TP.DESC_TIPO_PROPIEDAD;
+
+  DBMS_OUTPUT.PUT_LINE('RESUMEN DE: '||v_propiedad||chr(10)
+
+  ||'TOTAL DE PROPIEDADES: '|| v_total_propiedades|| chr(10)
+
+  ||'VALOR TOTAL ARRIENDO: '|| to_char(v_valor_total,'L999G999G999'));
+
+   
+
+  SELECT
+
+  TP.DESC_TIPO_PROPIEDAD,
+
+  COUNT(P.ID_TIPO_PROPIEDAD),
+
+  SUM(P.VALOR_ARRIENDO)
+
+  INTO v_propiedad, v_total_propiedades, v_valor_total
+
+  FROM PROPIEDAD P
+
+  INNER JOIN TIPO_PROPIEDAD TP ON P.ID_TIPO_PROPIEDAD = TP.ID_TIPO_PROPIEDAD
+
+  WHERE P.ID_TIPO_PROPIEDAD=:b_propiedad_b
+
+  GROUP BY TP.DESC_TIPO_PROPIEDAD;
+
+  DBMS_OUTPUT.PUT_LINE('RESUMEN DE: '||v_propiedad||chr(10)
+
+  ||'TOTAL DE PROPIEDADES: '|| v_total_propiedades|| chr(10)
+
+  ||'VALOR TOTAL ARRIENDO: '|| to_char(v_valor_total,'L999G999G999'));
+
+   
+
+  SELECT
+
+  TP.DESC_TIPO_PROPIEDAD,
+
+  COUNT(P.ID_TIPO_PROPIEDAD),
+
+  SUM(P.VALOR_ARRIENDO)
+
+  INTO v_propiedad, v_total_propiedades, v_valor_total
+
+  FROM PROPIEDAD P
+
+  INNER JOIN TIPO_PROPIEDAD TP ON P.ID_TIPO_PROPIEDAD = TP.ID_TIPO_PROPIEDAD
+
+  WHERE P.ID_TIPO_PROPIEDAD=:b_propiedad_c
+
+  GROUP BY TP.DESC_TIPO_PROPIEDAD;
+
+  DBMS_OUTPUT.PUT_LINE('RESUMEN DE: '||v_propiedad||chr(10)
+
+  ||'TOTAL DE PROPIEDADES: '|| v_total_propiedades|| chr(10)
+
+  ||'VALOR TOTAL ARRIENDO: '|| to_char(v_valor_total,'L999G999G999'));
+
+   
+
+  SELECT
+
+  TP.DESC_TIPO_PROPIEDAD,
+
+  COUNT(P.ID_TIPO_PROPIEDAD),
+
+  SUM(P.VALOR_ARRIENDO)
+
+  INTO v_propiedad, v_total_propiedades, v_valor_total
+
+  FROM PROPIEDAD P
+
+  INNER JOIN TIPO_PROPIEDAD TP ON P.ID_TIPO_PROPIEDAD = TP.ID_TIPO_PROPIEDAD
+
+  WHERE P.ID_TIPO_PROPIEDAD=:b_propiedad_d
+
+  GROUP BY TP.DESC_TIPO_PROPIEDAD;
+
+  DBMS_OUTPUT.PUT_LINE('RESUMEN DE: '||v_propiedad||chr(10)
+
+  ||'TOTAL DE PROPIEDADES: '|| v_total_propiedades|| chr(10)
+
+  ||'VALOR TOTAL ARRIENDO: '|| to_char(v_valor_total,'L999G999G999'));
+
+   
+
+  SELECT
+
+  TP.DESC_TIPO_PROPIEDAD,
+
+  COUNT(P.ID_TIPO_PROPIEDAD),
+
+  SUM(P.VALOR_ARRIENDO)
+
+  INTO v_propiedad, v_total_propiedades, v_valor_total
+
+  FROM PROPIEDAD P
+
+  INNER JOIN TIPO_PROPIEDAD TP ON P.ID_TIPO_PROPIEDAD = TP.ID_TIPO_PROPIEDAD
+
+  WHERE P.ID_TIPO_PROPIEDAD=:b_propiedad_e
+
+  GROUP BY TP.DESC_TIPO_PROPIEDAD;
+
+  DBMS_OUTPUT.PUT_LINE('RESUMEN DE: '||v_propiedad||chr(10)
+
+  ||'TOTAL DE PROPIEDADES: '|| v_total_propiedades|| chr(10)
+
+  ||'VALOR TOTAL ARRIENDO: '|| to_char(v_valor_total,'L999G999G999'));
+
+   
+
+  SELECT
+
+  TP.DESC_TIPO_PROPIEDAD,
+
+  COUNT(P.ID_TIPO_PROPIEDAD),
+
+  SUM(P.VALOR_ARRIENDO)
+
+  INTO v_propiedad, v_total_propiedades, v_valor_total
+
+  FROM PROPIEDAD P
+
+  INNER JOIN TIPO_PROPIEDAD TP ON P.ID_TIPO_PROPIEDAD = TP.ID_TIPO_PROPIEDAD
+
+  WHERE P.ID_TIPO_PROPIEDAD=:b_propiedad_f
+
+  GROUP BY TP.DESC_TIPO_PROPIEDAD;
+
+  DBMS_OUTPUT.PUT_LINE('RESUMEN DE: '||v_propiedad||chr(10)
+
+  ||'TOTAL DE PROPIEDADES: '|| v_total_propiedades|| chr(10)
+
+  ||'VALOR TOTAL ARRIENDO: '|| to_char(v_valor_total,'L999G999G999'));
+
+   
+
+  SELECT
+
+  TP.DESC_TIPO_PROPIEDAD,
+
+  COUNT(P.ID_TIPO_PROPIEDAD),
+
+  SUM(P.VALOR_ARRIENDO)
+
+  INTO v_propiedad, v_total_propiedades, v_valor_total
+
+  FROM PROPIEDAD P
+
+  INNER JOIN TIPO_PROPIEDAD TP ON P.ID_TIPO_PROPIEDAD = TP.ID_TIPO_PROPIEDAD
+
+  WHERE P.ID_TIPO_PROPIEDAD=:b_propiedad_g
+
+  GROUP BY TP.DESC_TIPO_PROPIEDAD;
+
+  DBMS_OUTPUT.PUT_LINE('RESUMEN DE: '||v_propiedad||chr(10)
+
+  ||'TOTAL DE PROPIEDADES: '|| v_total_propiedades|| chr(10)
+
+  ||'VALOR TOTAL ARRIENDO: '|| to_char(v_valor_total,'L999G999G999'));
+
+   
+
+  SELECT
+
+  TP.DESC_TIPO_PROPIEDAD,
+
+  COUNT(P.ID_TIPO_PROPIEDAD),
+
+  SUM(P.VALOR_ARRIENDO)
+
+  INTO v_propiedad, v_total_propiedades, v_valor_total
+
+  FROM PROPIEDAD P
+
+  INNER JOIN TIPO_PROPIEDAD TP ON P.ID_TIPO_PROPIEDAD = TP.ID_TIPO_PROPIEDAD
+
+  WHERE P.ID_TIPO_PROPIEDAD=:b_propiedad_h
+
+  GROUP BY TP.DESC_TIPO_PROPIEDAD;
+
+  DBMS_OUTPUT.PUT_LINE('RESUMEN DE: '||v_propiedad||chr(10)
+
+  ||'TOTAL DE PROPIEDADES: '|| v_total_propiedades|| chr(10)
+
+  ||'VALOR TOTAL ARRIENDO: '|| to_char(v_valor_total,'L999G999G999'));
+
+   
+
+END;

@@ -1,0 +1,43 @@
+-- CASO 2
+VAR b_rut NUMBER
+EXEC :b_rut := &RUT;
+
+VAR b_monto NUMBER
+EXEC :b_monto := 800000;
+
+DECLARE
+
+V_NOMBRECOMPLETO VARCHAR2(57);
+
+V_RUT CLIENTE.numrut_cli%TYPE;
+
+V_DV CLIENTE.dvrut_cli%TYPE;
+
+V_ESTCIVIL ESTADO_CIVIL.desc_estcivil%TYPE;
+
+V_RENTA CLIENTE.renta_cli%TYPE;
+
+BEGIN
+
+SELECT nombre_cli||' '||APPATERNO_CLI || ' ' || apmaterno_cli,
+NUMRUT_CLI,DVRUT_CLI,RENTA_CLI,ce.desc_estcivil
+INTO V_NOMBRECOMPLETO,V_RUT,V_DV,V_RENTA,V_ESTCIVIL
+FROM cliente c 
+INNER JOIN ESTADO_CIVIL ce on c.id_estcivil=ce.id_estcivil
+WHERE numrut_cli=:b_rut AND ((ce.ID_ESTCIVIL in (3, 4) AND RENTA_CLI >=:b_monto) or ce.id_estcivil = 1);
+
+
+DBMS_OUTPUT.PUT_LINE('DATOS DEL CLIENTE');
+DBMS_OUTPUT.PUT_LINE('-----------------');
+DBMS_OUTPUT.PUT_LINE('Nombre: '||V_NOMBRECOMPLETO);
+DBMS_OUTPUT.PUT_LINE('RUN: '||TO_CHAR(V_RUT,'99G999G999')||'-'||V_DV);
+
+
+
+DBMS_OUTPUT.PUT_LINE('Estado civil: '|| v_estcivil);
+
+DBMS_OUTPUT.PUT_LINE('Renta: ' || v_renta);
+
+
+
+END;

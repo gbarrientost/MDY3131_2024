@@ -1,0 +1,31 @@
+--Caso 1
+SET SERVEROUTPUT ON;
+VARIABLE b_rut NUMBER;
+EXEC :b_rut :=18560875;
+VARIABLE b_porcentaje NUMBER;
+EXEC :b_porcentaje :=40;
+
+DECLARE
+ v_nomC VARCHAR2(57);
+ v_numR EMPLEADO.numrut_emp%TYPE;
+ v_dv EMPLEADO.dvrut_emp%TYPE;
+ v_sueldo EMPLEADO.sueldo_emp%TYPE;
+ v_bon EMPLEADO.sueldo_emp%TYPE;
+BEGIN
+
+SELECT nombre_emp || ' ' || appaterno_emp || ' ' || apmaterno_emp,
+numrut_emp, dvrut_emp, sueldo_emp
+INTO v_nomC, v_numR, v_dv, v_sueldo
+FROM EMPLEADO
+WHERE sueldo_emp <= 500000  AND ID_CATEGORIA_EMP NOT IN (3)
+AND numrut_emp = :b_rut;
+
+  v_bon := v_sueldo*(:b_porcentaje/100);
+
+  DBMS_OUTPUT.PUT_LINE('DATOS CALCULO BONIFICACION EXTRA DEL : ' || :b_porcentaje||'% DEL SUELDO');
+  DBMS_OUTPUT.PUT_LINE('El nombre del empleado es : ' || UPPER(v_nomC));
+  DBMS_OUTPUT.PUT_LINE('Cédula del empleado es : ' || TO_CHAR(v_numR, '99G999G999') || '-' || v_dv);
+  DBMS_OUTPUT.PUT_LINE('Sueldo : ' || TRIM(TO_CHAR(v_sueldo,'L99G999G999')));
+  DBMS_OUTPUT.PUT_LINE('Bono : ' || TRIM(TO_CHAR(v_bon,'L99G999G999')));
+
+END;
